@@ -1,23 +1,22 @@
 package pja.edu.s19183.masmp5.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@ToString
 public class Company {
+
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -30,5 +29,12 @@ public class Company {
     @NotBlank(message = "You should specify the city where the company is located!")
     @Size(min = 2, max = 30)
     private String city;
+
+
+    @OneToMany(mappedBy = "company", fetch = FetchType.LAZY)
+    @Builder.Default
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    private Set<Driver> drivers = new HashSet<>();
 
 }
