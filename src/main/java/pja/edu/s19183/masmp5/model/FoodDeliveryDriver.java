@@ -13,6 +13,7 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder
+//@Table(name = "delivery")
 public class FoodDeliveryDriver extends Driver{
 
     @Id
@@ -23,9 +24,9 @@ public class FoodDeliveryDriver extends Driver{
     private String typeOfTransport;
 
 
-    @OneToMany(mappedBy = "foodDeliveryDriver", cascade = {CascadeType.REMOVE})
+    @OneToMany(mappedBy = "foodDeliveryDriver", cascade = CascadeType.REMOVE)
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    private Set<Order> orders;
+    private Set<OrderInfo> orderInfos;
 
 }

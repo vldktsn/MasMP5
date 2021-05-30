@@ -13,6 +13,7 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+//@Table(name = "FoodOrder")
 public class FoodOrder {
 
 
@@ -34,13 +35,16 @@ public class FoodOrder {
     private Double price;
 
 
-    @OneToMany(mappedBy = "foodOrder", cascade = {CascadeType.REMOVE})
+    @OneToMany(mappedBy = "foodOrder", cascade = CascadeType.REMOVE)
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    private Set<Order> orders;
+    private Set<OrderInfo> orderInfos;
 
 
-
+    @OneToMany(mappedBy = "foodOrder", cascade = CascadeType.REMOVE)
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    private Set<Dish> dishes;
 
 
 }

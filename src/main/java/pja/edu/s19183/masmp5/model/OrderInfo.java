@@ -15,7 +15,8 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Order {
+@Table(uniqueConstraints = {@UniqueConstraint(columnNames = {"foodOrder_id", "foodDeliveryDriver_id"})})
+public class OrderInfo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

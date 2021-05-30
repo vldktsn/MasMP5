@@ -20,6 +20,8 @@ public class DataInitializer {
         Iterable<Company> all = companyRepo.findAll();
         System.out.println(all);
 
+
+
     }
 
 }

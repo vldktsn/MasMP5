@@ -17,7 +17,7 @@ import java.util.Optional;
 
 
 @DataJpaTest
-class AssicoationTest {
+class AssociationTest {
 
     @Autowired
     private CompanyRepo companyRepo;
