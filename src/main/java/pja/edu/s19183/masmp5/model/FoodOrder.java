@@ -1,12 +1,18 @@
 package pja.edu.s19183.masmp5.model;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import lombok.*;
+
+import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import java.util.Set;
 
 @Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class FoodOrder {
 
 
@@ -14,9 +20,27 @@ public class FoodOrder {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @NotBlank
     private String street;
 
+    @NotBlank
     private String clientName;
 
-    private
+    @NotBlank
+    private String clientPhoneNumber;
+
+    @NotBlank
+    @Min(50)
+    private Double price;
+
+
+    @OneToMany(mappedBy = "foodOrder", cascade = {CascadeType.REMOVE})
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    private Set<Order> orders;
+
+
+
+
+
 }

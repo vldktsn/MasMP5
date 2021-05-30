@@ -1,12 +1,12 @@
 package pja.edu.s19183.masmp5.model;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import lombok.experimental.SuperBuilder;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import java.util.Set;
 
 @Entity
 @Data
@@ -14,7 +14,18 @@ import javax.persistence.Entity;
 @AllArgsConstructor
 @SuperBuilder
 public class FoodDeliveryDriver extends Driver{
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
+    @NotBlank
     private String typeOfTransport;
 
+
+    @OneToMany(mappedBy = "foodDeliveryDriver", cascade = {CascadeType.REMOVE})
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    private Set<Order> orders;
 
 }
