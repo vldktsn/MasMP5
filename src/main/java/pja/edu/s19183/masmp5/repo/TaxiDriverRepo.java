@@ -5,4 +5,5 @@ import pja.edu.s19183.masmp5.model.TaxiDriver;
 
 public interface TaxiDriverRepo extends CrudRepository<TaxiDriver,Long> {
 
+
 }

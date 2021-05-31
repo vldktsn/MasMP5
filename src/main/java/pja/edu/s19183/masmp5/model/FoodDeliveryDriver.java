@@ -6,6 +6,7 @@ import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.util.Set;
 
 @Entity
@@ -20,7 +21,8 @@ public class FoodDeliveryDriver extends Driver{
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @NotBlank
+    @NotBlank(message = "You should specify the type of transport of Food Delivery Driver!")
+    @Size(min = 2, max = 30)
     private String typeOfTransport;
 
 

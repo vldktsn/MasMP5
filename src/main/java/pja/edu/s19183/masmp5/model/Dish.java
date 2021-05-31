@@ -4,6 +4,7 @@ package pja.edu.s19183.masmp5.model;
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Dish {
@@ -17,11 +18,12 @@ public class Dish {
     private FoodOrder foodOrder;
 
 
-    @NotBlank
+    @NotBlank(message = "You should specify dishes!")
+    @Size(min = 2, max = 30)
     private String dish;
 
     @NotBlank
-    @Min(0)
+    @Min(5)
     private Double price;
 
 }

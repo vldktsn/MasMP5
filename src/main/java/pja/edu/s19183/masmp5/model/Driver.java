@@ -6,6 +6,10 @@ import lombok.experimental.SuperBuilder;
 
 import javax.annotation.security.DenyAll;
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Data
@@ -19,8 +23,16 @@ public abstract class Driver {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @NotBlank(message = "You should specify the first name of the Driver!")
+    @Size(min = 2, max = 30)
     private String firstName;
+
+    @NotBlank(message = "You should specify the last name of the Driver!")
+    @Size(min = 2, max = 30)
     private String lastName;
+
+    @NotNull
+    @Min(200)
     private double salary;
 
     @ManyToOne

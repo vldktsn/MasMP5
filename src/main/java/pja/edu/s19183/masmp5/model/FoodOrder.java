@@ -6,6 +6,7 @@ import lombok.*;
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.util.Set;
 
 @Entity
@@ -21,13 +22,16 @@ public class FoodOrder {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @NotBlank
+    @NotBlank(message = "You should specify the Delivery Address!")
+    @Size(min = 2, max = 30)
     private String street;
 
-    @NotBlank
+    @NotBlank(message = "You should specify the Client's first name!")
+    @Size(min = 2, max = 30)
     private String clientName;
 
-    @NotBlank
+    @NotBlank(message = "You should specify the Client's phone number!")
+    @Size(min = 2, max = 30)
     private String clientPhoneNumber;
 
     @NotBlank

@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import pja.edu.s19183.masmp5.model.Company;
 import pja.edu.s19183.masmp5.model.Driver;
 import pja.edu.s19183.masmp5.model.FoodDeliveryDriver;
 import pja.edu.s19183.masmp5.model.TaxiDriver;
@@ -11,6 +12,7 @@ import pja.edu.s19183.masmp5.model.TaxiDriver;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.Arrays;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -54,7 +56,7 @@ class DriverRepoTest {
                 .builder()
                 .firstName("Radyslav")
                 .lastName("Burylko")
-                .salary(2000)
+                .salary(6000)
                 .typeOfTransport("Legs")
                 .build();
     }
@@ -75,4 +77,5 @@ class DriverRepoTest {
         entityManager.flush();
         assertEquals(3, driverRepo.count());
     }
+
 }

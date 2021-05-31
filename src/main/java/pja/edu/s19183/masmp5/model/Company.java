@@ -16,8 +16,6 @@ import java.util.Set;
 @ToString
 public class Company {
 
-
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
